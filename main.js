@@ -78,13 +78,13 @@ function creazionePost(posts){
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="${posts.id}">
+                    <a class="like-button  js-like-button" href="#!" data-postid="${posts.id}">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
                 </div>
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-1" class="js-likes-counter">${posts.likes}</b> persone
+                    Piace a <b id="${posts.id}" class="js-likes-counter">${posts.likes}</b> persone
                 </div>
             </div> 
         </div>  
@@ -100,18 +100,21 @@ for(let i = 0; i < posts.length; i++){
 let likeBtn = document.querySelectorAll('.like-button');
 let likeBtnIcon = document.querySelectorAll('.like-button__icon');
 let likeBtnLabel = document.querySelectorAll('.like-button__label');
-let postLikes = document.querySelectorAll('.js-likes-counter');
-console.log(postLikes)
 
 
+
+let postLikesCounter = [];
 
 for(let i = 0; i < likeBtn.length; i++){
     likeBtn[i].addEventListener('click', function(){
+        let postLikes = document.getElementById(i+1);
         if(likeBtnIcon[i].classList.contains('like-button--liked')){
             likeBtnIcon[i].classList.remove('like-button--liked');
             likeBtnLabel[i].classList.remove('like-button--liked');
+            postLikes.innerHTML = (parseInt (postLikes.innerHTML) - 1)
         }else{
             likeBtnIcon[i].classList.add('like-button--liked');
             likeBtnLabel[i].classList.add('like-button--liked');
+            postLikes.innerHTML = (parseInt (postLikes.innerHTML) + 1);
         }
 })}
