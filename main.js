@@ -56,6 +56,7 @@ const posts = [
     }
 ];
 
+//Crea i post prendendo i dati dall'array [posts], usando il ciclo for così da avere 5 post
 
 function creazionePost(posts){
     document.querySelector('.posts-list').innerHTML +=`
@@ -63,7 +64,7 @@ function creazionePost(posts){
         <div class="post__header">
             <div class="post-meta">                    
                 <div class="post-meta__icon">
-                    <img class="profile-pic" src="${posts.author.image}" alt="Phil Mangione">                    
+                    <img class="profile-pic" src="${posts.author.image}" alt=">${posts.author.name}">                    
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${posts.author.name}</div>
@@ -96,11 +97,11 @@ for(let i = 0; i < posts.length; i++){
     creazionePost(posts[i])
 }
 
+//Al click di "mi piace", pollice up e scritta diventano verdi + counter dei like aumenta/decrementa
 
 let likeBtn = document.querySelectorAll('.like-button');
 let likeBtnIcon = document.querySelectorAll('.like-button__icon');
 let likeBtnLabel = document.querySelectorAll('.like-button__label');
-
 
 
 let postLikesCounter = [];
@@ -118,3 +119,17 @@ for(let i = 0; i < likeBtn.length; i++){
             postLikes.innerHTML = (parseInt (postLikes.innerHTML) + 1);
         }
 })}
+
+
+//Sostituire l'immagine profilo di chi non la possiede con le iniziali del nome
+
+/* function getImmagineProfilo (autore){
+    return `<img class="profile-pic" src="${posts.author.image}" alt=">${posts.author.name}">`
+
+function getInizialiProfilo (autore){
+    return `<div class="profile-pic-default"><span><//span></div>`
+
+} */
+
+
+//Estrapolare iniziali del nome
