@@ -59,16 +59,26 @@ const posts = [
 //Crea i post prendendo i dati dall'array [posts], usando il ciclo for così da avere 5 post
 
 function creazionePost(posts){
+    let immagineValida = '';
+    if(posts.author.image == null){
+        immagineValida = "https://www.ladyblitz.it/wp-content/uploads/2015/09/fbShared-e1442238915211.jpg"
+    }else{
+    immagineValida = posts.author.image
+    }
+
+    let dataUsa = posts.created.split("-");
+    let dataIta = dataUsa[2] + "-" +dataUsa[1] + "-" + dataUsa[0]
+
     document.querySelector('.posts-list').innerHTML +=`
     <div class="post">
         <div class="post__header">
             <div class="post-meta">                    
                 <div class="post-meta__icon">
-                    <img class="profile-pic" src="${posts.author.image}" alt=">${posts.author.name}">                    
+                    <img class="profile-pic" src="${immagineValida}" alt=">${posts.author.name}">                    
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${posts.author.name}</div>
-                    <div class="post-meta__time">${posts.created}</div>
+                    <div class="post-meta__time">${dataIta}</div>
                 </div>                    
             </div>
         </div>
