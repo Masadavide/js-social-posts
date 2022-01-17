@@ -56,6 +56,8 @@ const posts = [
     }
 ];
 
+const array2= [];
+
 //Crea i post prendendo i dati dall'array [posts], usando il ciclo for così da avere 5 post
 
 function creazionePost(posts){
@@ -128,6 +130,11 @@ for(let i = 0; i < likeBtn.length; i++){
             likeBtnLabel[i].classList.add('like-button--liked');
             postLikes.innerHTML = (parseInt (postLikes.innerHTML) + 1);
         }
+
+        //aggiungiamo gli id con il mi piace ad un array
+        array2.push(posts[i].id)
+        console.log(array2)
+
 })}
 
 
@@ -143,3 +150,4 @@ function getInizialiProfilo (autore){
 
 
 //Estrapolare iniziali del nome
+
